@@ -17,11 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('books/delete', [BookController::class, 'delete']);
+Route::get('books/delete', [BookController::class, 'delete'])->name('books.delete');
 
-Route::put('books/{book}/restore', [BookController::class, 'restore']);
+Route::put('books/{book}/restore', [BookController::class, 'restore'])->withTrashed();
 
-Route::delete('books/{book}/force', [BookController::class, 'forceDestroy']);
+Route::delete('books/{book}/force', [BookController::class, 'forceDestroy'])->withTrashed();
 
 Route::resource('books', BookController::class)
     ->missing(function (Request $request) {

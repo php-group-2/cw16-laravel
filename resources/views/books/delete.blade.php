@@ -1,3 +1,6 @@
+@unless (count($books))
+    <p>There are no books to delete or undo.</p>
+@endunless
 @foreach ($books as $book)
     <div>
         <a href="/books/{{ $book->id }}">{{ $book->id }}</a> -
@@ -17,3 +20,4 @@
         </form>
     </div>
 @endforeach
+<a href="/books">Go back</a>

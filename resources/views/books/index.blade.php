@@ -7,6 +7,9 @@
 <a href="/books/create">Create a book</a>
 <a href="/books/delete">Show deleted books</a>
 
+@unless (count($books))
+    <p>There are no books to show.</p>
+@endunless
 
 @foreach ($books as $book)
     <div>

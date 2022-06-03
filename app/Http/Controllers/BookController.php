@@ -34,9 +34,8 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function restore($id)
+    public function restore(Book $book)
     {
-        $book = Book::onlyTrashed()->findOrFail($id);
         $book->restore();
         return redirect()->route('books.index');
     }
@@ -116,10 +115,9 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function forceDestroy($id)
+    public function forceDestroy(Book $book)
     {
-        $book = Book::onlyTrashed()->findOrFail($id);
         $book->forceDelete();
-        return redirect()->route('books.index');
+        return redirect()->route('books.delete');
     }
 }
